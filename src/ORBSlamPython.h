@@ -7,6 +7,12 @@
 #include <ORB_SLAM2/System.h>
 #include <ORB_SLAM2/Tracking.h>
 
+#if PY_VERSION_HEX >= 0x03000000
+#define NUMPY_IMPORT_ARRAY_RETVAL NULL
+#else
+#define NUMPY_IMPORT_ARRAY_RETVAL
+#endif
+
 class ORBSlamPython
 {
 public:
