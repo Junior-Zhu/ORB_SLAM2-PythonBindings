@@ -28,10 +28,13 @@ else()
    message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
-find_package(PythonLibs 3.5 REQUIRED)
+#set(BOOST_INCLUDE_DIR "/home/junior/Junior/Study/DeepReinforcementLearning/habitat/habitat-lab/habitat_baselines/slambased/3rdparty/boost_install/include/boost")
+#set(BOOST_LIB_DIR "/home/junior/Junior/Study/DeepReinforcementLearning/habitat/habitat-lab/habitat_baselines/slambased/3rdparty/boost_install/lib")
+
+find_package(PythonLibs 3.7 REQUIRED)
 find_package(NumPy)
-find_package(Boost 1.45.0 REQUIRED)
-find_package(OpenCV REQUIRED)
+find_package(Boost 1.70.0 REQUIRED COMPONENTS python37)
+find_package(OpenCV 3.0 REQUIRED)
 find_package(ORB_SLAM2 REQUIRED)
 find_package(Pangolin)
 
@@ -69,5 +72,5 @@ if (Pangolin_FOUND)
   target_link_libraries(${TARGET_MODULE_NAME} ${Pangolin_LIBRARIES})
 endif()
 
-install(TARGETS ${TARGET_MODULE_NAME} DESTINATION lib/python3.7/dist-packages)
+install(TARGETS ${TARGET_MODULE_NAME} DESTINATION "/home/junior/anaconda3/envs/habitat/lib/python3.7/site-packages/")
 

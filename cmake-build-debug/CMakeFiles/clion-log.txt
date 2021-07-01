@@ -1,0 +1,14 @@
+/home/junior/Junior/Apps/clion-2020.3.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/junior/Junior/Study/DeepReinforcementLearning/habitat/habitat-lab/habitat_baselines/slambased/3rdparty/ORB_SLAM2-PythonBindings
+Build type: Debug
+-- Using flag -std=c++11.
+CMake Error at /home/junior/Junior/Apps/clion-2020.3.2/bin/cmake/linux/share/cmake-3.17/Modules/FindPackageHandleStandardArgs.cmake:164 (message):
+  Could NOT find PythonLibs (missing: PYTHON_LIBRARIES PYTHON_INCLUDE_DIRS)
+  (Required is at least version "3.7")
+Call Stack (most recent call first):
+  /home/junior/Junior/Apps/clion-2020.3.2/bin/cmake/linux/share/cmake-3.17/Modules/FindPackageHandleStandardArgs.cmake:445 (_FPHSA_FAILURE_MESSAGE)
+  /home/junior/Junior/Apps/clion-2020.3.2/bin/cmake/linux/share/cmake-3.17/Modules/FindPythonLibs.cmake:310 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+  CMakeLists.txt:34 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/junior/Junior/Study/DeepReinforcementLearning/habitat/habitat-lab/habitat_baselines/slambased/3rdparty/ORB_SLAM2-PythonBindings/cmake-build-debug/CMakeFiles/CMakeOutput.log".
