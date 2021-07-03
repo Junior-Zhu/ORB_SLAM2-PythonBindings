@@ -28,8 +28,8 @@ public:
     bool processMono(cv::Mat image, double timestamp);
     bool loadAndProcessStereo(std::string leftImageFile, std::string rightImageFile, double timestamp);
     bool processStereo(cv::Mat leftImage, cv::Mat rightImage, double timestamp);
-    bool loadAndProcessRGBD(std::string imageFile, std::string depthImageFile, double timestamp);
-    bool processRGBD(cv::Mat image, cv::Mat depthImage, double timestamp);
+    boost::python::tuple loadAndProcessRGBD(std::string imageFile, std::string depthImageFile, double timestamp);
+    boost::python::tuple processRGBD(cv::Mat image, cv::Mat depthImage, double timestamp);
     void reset();
     void shutdown();
     ORB_SLAM2::Tracking::eTrackingState getTrackingState() const;

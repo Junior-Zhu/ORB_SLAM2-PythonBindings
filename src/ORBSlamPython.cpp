@@ -172,11 +172,11 @@ bool ORBSlamPython::processStereo(cv::Mat leftImage, cv::Mat rightImage, double 
     }
 }
 
-bool ORBSlamPython::loadAndProcessRGBD(std::string imageFile, std::string depthImageFile, double timestamp)
+boost::python::tuple ORBSlamPython::loadAndProcessRGBD(std::string imageFile, std::string depthImageFile, double timestamp)
 {
     if (!system)
     {
-        return false;
+        return boost::python::tuple();
     }
     cv::Mat im = cv::imread(imageFile, cv::IMREAD_COLOR);
     if (bUseRGB)
@@ -187,20 +187,41 @@ bool ORBSlamPython::loadAndProcessRGBD(std::string imageFile, std::string depthI
     return this->processRGBD(im, imDepth, timestamp);
 }
 
-bool ORBSlamPython::processRGBD(cv::Mat image, cv::Mat depthImage, double timestamp)
+boost::python::tuple ORBSlamPython::processRGBD(cv::Mat image, cv::Mat depthImage, double timestamp)
 {
     if (!system)
     {
-        return false;
+        return boost::python::tuple();
     }
     if (image.data && depthImage.data)
     {
         cv::Mat pose = system->TrackRGBD(image, depthImage, timestamp);
-        return !pose.empty();
+        if(!pose.empty())
+        {
+            boost::python::tuple tpose = boost::python::make_tuple(
+                    pose.at<float>(0, 0),
+                    pose.at<float>(0, 1),
+                    pose.at<float>(0, 2),
+                    pose.at<float>(0, 3),
+                    pose.at<float>(1, 0),
+                    pose.at<float>(1, 1),
+                    pose.at<float>(1, 2),
+                    pose.at<float>(1, 3),
+                    pose.at<float>(2, 0),
+                    pose.at<float>(2, 1),
+                    pose.at<float>(2, 2),
+                    pose.at<float>(2, 3)
+            );
+            return tpose;
+        }
+        else
+        {
+            return boost::python::tuple();
+        }
     }
     else
     {
-        return false;
+        return boost::python::tuple();
     }
 }
 
