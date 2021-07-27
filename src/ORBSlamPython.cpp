@@ -234,7 +234,7 @@ void ORBSlamPython::shutdown()
     }
 }
 
-ORB_SLAM2::Tracking::eTrackingState ORBSlamPython::getTrackingState() const
+ORB_SLAM2::Tracking::eTrackingState ORBSlamPython:: getTrackingState() const
 {
     if (system)
     {
