@@ -89,6 +89,7 @@ ORBSlamPython::ORBSlamPython(const char* vocabFile, const char* settingsFile, OR
 
 ORBSlamPython::~ORBSlamPython()
 {
+    std::cout << "Delete System in C++..." << std::endl;
 }
 
 bool ORBSlamPython::initialize()
@@ -191,6 +192,8 @@ boost::python::tuple ORBSlamPython::processRGBD(cv::Mat image, cv::Mat depthImag
 {
     if (!system)
     {
+        image.release();
+        depthImage.release();
         return boost::python::tuple();
     }
     if (image.data && depthImage.data)
@@ -212,15 +215,22 @@ boost::python::tuple ORBSlamPython::processRGBD(cv::Mat image, cv::Mat depthImag
                     pose.at<float>(2, 2),
                     pose.at<float>(2, 3)
             );
+            image.release();
+            depthImage.release();
+            pose.release();
             return tpose;
         }
         else
         {
+            image.release();
+            depthImage.release();
             return boost::python::tuple();
         }
     }
     else
     {
+        image.release();
+        depthImage.release();
         return boost::python::tuple();
     }
 }

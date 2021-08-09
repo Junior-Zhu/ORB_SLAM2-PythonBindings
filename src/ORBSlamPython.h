@@ -46,7 +46,7 @@ public:
     
     static bool saveSettingsFile(boost::python::dict settings, std::string settingsFilename);
     static boost::python::dict loadSettingsFile(std::string settingsFilename);
-    
+
 private:
     std::string vocabluaryFile;
     std::string settingsFile;
